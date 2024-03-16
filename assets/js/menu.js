@@ -20,6 +20,9 @@
 //  e analyze lang ug tarung promise ma sabtan rajud ni nimu then after nimu analayze e remove ni nga message kay paksit jud ka kung mabasahan ni wohahahaha 
 // then careful lang pud diay sa pag ilis sa mga name ayaw lang ilisi ang mga property name, sa product name lang, kay kung property name imung ilisan make sure nga maka subay ka sa code kay ginatawag na sila
 
+document.addEventListener("DOMContentLoaded", function(event) {
+    // Your JavaScript code here
+
 
 
 let menu_btn = document.getElementsByClassName("menu_selection");
@@ -42,6 +45,7 @@ function menuCategory(){
                             </figure>
                             <div class="food_det">
                                 <h3 id="food_name">${item.food_name}</h3>
+                                <p class="food_description">${item.food_description}</p>
                                 <span>
                                     ₱
                                    <small id="food_price">${item.food_price}</small> 
@@ -64,6 +68,7 @@ function menuCategory(){
                             </figure>
                             <div class="food_det">
                                 <h3 id="food_name">${item.snacks_name}</h3>
+                                <p class="food_description">${item.food_description}</p>
                                 <span>
                                     ₱
                                    <small id="food_price">${item.snacks_price}</small> 
@@ -85,6 +90,7 @@ function menuCategory(){
                             </figure>
                             <div class="food_det">
                                 <h3 id="food_name">${item.dessert_name}</h3>
+                                <p class="food_description">${item.food_description}</p>
                                 <span>
                                     ₱
                                    <small id="food_price">${item.dessert_price}</small> 
@@ -106,6 +112,7 @@ function menuCategory(){
                             </figure>
                             <div class="food_det">
                                 <h3 id="food_name">${item.beer_name}</h3>
+                                <p class="food_description">${item.food_description}</p>
                                 <span>
                                     ₱
                                    <small id="food_price">${item.beer_price}</small> 
@@ -127,6 +134,7 @@ function menuCategory(){
                             </figure>
                             <div class="food_det">
                                 <h3 id="food_name">${item.dessert_drink_name}</h3>
+                                <p class="food_description">${item.food_description}</p>
                                 <span>
                                     ₱
                                    <small id="food_price">${item.dessert_drink_price}</small> 
@@ -148,6 +156,7 @@ function menuCategory(){
                             </figure>
                             <div class="food_det">
                                 <h3 id="food_name">${item.egg_ham_name}</h3>
+                                <p class="food_description">${item.food_description}</p>
                                 <span>
                                     ₱
                                    <small id="food_price">${item.egg_ham_price}</small> 
@@ -169,6 +178,7 @@ function menuCategory(){
                             </figure>
                             <div class="food_det">
                                 <h3 id="food_name">${item.biscuit_name}</h3>
+                                <p class="food_description">${item.food_description}</p>
                                 <span>
                                     ₱
                                    <small id="food_price">${item.biscuit_price}</small> 
@@ -179,7 +189,7 @@ function menuCategory(){
                 });
             }if (i === 7){
                 document.getElementById('category_name').textContent = 'Fries';
-                document.getElementById('items_count').textContent = biscuit_Category.length;
+                document.getElementById('items_count').textContent = fries_Category.length;
                 modal_overlay.style.display = "block";
                 console.log('DESSERT');
                 fries_Category.forEach(item => {
@@ -190,6 +200,7 @@ function menuCategory(){
                             </figure>
                             <div class="food_det">
                                 <h3 id="food_name">${item.fries_name}</h3>
+                                <p class="food_description">${item.food_description}</p>
                                 <span>
                                     ₱
                                    <small id="food_price">${item.fries_price}</small> 
@@ -199,11 +210,18 @@ function menuCategory(){
                     `;
                 });
             }
+
+    hideDescription(); //comment this code if you want to hide the food description
+
         });
+        
     }
 
+
 }
+
 menuCategory();
+
 
 
 // close modal
@@ -213,6 +231,16 @@ pop_close_btn.addEventListener('click', function(){
     menu_category_list.innerHTML = [];
 });
 
+function hideDescription() {
+    let food_description1 = document.querySelectorAll('.food_description'); // Use .food_description for class selection
+    for (let i = 0; i < food_description1.length; i++) { // Corrected loop condition
+        food_description1[i].style.display = "none";
+    }
+}
+
+
+
+
 
 
 
@@ -221,6 +249,7 @@ pop_close_btn.addEventListener('click', function(){
 let menubar_function = document.getElementsByClassName("menubar_function");
 let menu_container_sorted = document.getElementById("menu_container_sorted");
 let product_key = document.querySelectorAll('.menu_cat_con');
+let notfound = document.getElementById('product_not_found');
 
 
 for(let i = 0;i < menubar_function.length; i++){
@@ -258,6 +287,7 @@ for(let i = 0;i < menubar_function.length; i++){
                     // If the keyword is matched, show the image
                     console.log("Showing brunch");
                     image.style.display = 'block'; // Show the image
+                    notfound.style.display = 'none';
                 } else {
                     // If the keyword is not matched, hide the image
                     console.log("Hiding not brunch");
@@ -276,6 +306,7 @@ for(let i = 0;i < menubar_function.length; i++){
                     // If the keyword is matched, show the image
                     console.log("Showing Drink");
                     image.style.display = 'block'; // Show the image
+                    notfound.style.display = 'none';
                 } else {
                     // If the keyword is not matched, hide the image
                     console.log("Hiding not Drink");
@@ -294,6 +325,7 @@ for(let i = 0;i < menubar_function.length; i++){
                     // If the keyword is matched, show the image
                     console.log("Showing Dessert");
                     image.style.display = 'block'; // Show the image
+                    notfound.style.display = 'none';
                 } else {
                     // If the keyword is not matched, hide the image
                     console.log("Hiding not Drinks");
@@ -312,6 +344,7 @@ for(let i = 0;i < menubar_function.length; i++){
                     // If the keyword is matched, show the image
                     console.log("Showing Snack");
                     image.style.display = 'block'; // Show the image
+                    notfound.style.display = 'none';
                 } else {
                     // If the keyword is not matched, hide the image
                     console.log("Hiding not Snack");
@@ -326,6 +359,8 @@ let food_names = document.getElementsByClassName('food_name');
 let food_prices = document.getElementsByClassName('food_price');
 let food_images = document.getElementsByClassName('food_image');
 let viewer_overlay = document.getElementById('viewer_overlay');
+let viewer_close_btn = document.getElementById('viewer_close_btn');
+
 
 for (let i = 0; i < product_key.length; i++) {
     product_key[i].addEventListener('click', () => {
@@ -342,6 +377,13 @@ for (let i = 0; i < product_key.length; i++) {
 
     });
 }
+
+viewer_close_btn.addEventListener('click' , function(){
+    viewer_overlay.style.display = 'none';
+})
+
+});
+
 
 
 

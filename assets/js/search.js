@@ -17,7 +17,7 @@ function search(){
             image.style.display = 'none';
         }
     });
-    let notfound = document.getElementById('not-found');
+    let notfound = document.getElementById('product_not_found');
     if(!found){
         notfound.style.display = 'flex';
     }else{
